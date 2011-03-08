@@ -385,6 +385,9 @@ class TypePadClient(batchhttp.client.BatchClient, OAuthHttp):
                 headers = dict(headers)
             cookies = ['='.join((key, value)) for key, value in self.cookies.items()]
             headers['cookie'] = '; '.join(cookies)
+
+        log.debug('request uri: %s' % uri)
+
         return super(TypePadClient, self).request(uri, method, body, headers, redirections, connection_type)
 
     def add_credentials(self, name, password, domain=""):
